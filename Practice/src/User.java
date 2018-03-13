@@ -1,4 +1,6 @@
 //Carlos Reyes
+//This file contains the code for User objects, or players of the inquisitive quiz game
+//This will detail certain important details about the player's performance, etc.
 
 public class User {
 	// These will be used later in development
