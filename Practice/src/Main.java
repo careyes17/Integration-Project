@@ -116,28 +116,83 @@ public class Main {
         scoreReport = "Keep it up!";
         break;
     }
-    //THESE SCORE ADDITIONS ARE PROOF OF CONCEPT EXAMPLES
+    // THESE SCORE ADDITIONS ARE PROOF OF CONCEPT EXAMPLES
     if (score * 2 == 4) {
-      //score == 2
+      // score == 2
+      scoreReport += "\nYour score is: " + score;
+    } else if (score / 2 == 4) {
+      // score == 8
+      scoreReport += "\nYour score is: " + score;
+    } else if (score - 2 == 7) {
+      // score == 9
+      scoreReport += "\nYour score is: " + score;
+    } else if (score + 2 == 12) {
+      // score == 10
       scoreReport += "\nYour score is: " + score;
     }
-    else if (score / 2 == 4) {
-      //score == 8
-      scoreReport += "\nYour score is: " + score;
+    // THESE STRING MODIFYING METHODS ARE SIMPLY USED AS PROOF OF CONCEPT
+    // EXAMPLES
+    scoreReport += "\nThe index of the first \"y\" in this message is: "
+        + scoreReport.indexOf("y");
+    scoreReport += "\nThe first 7 characters, including spaces, of this message are: "
+        + scoreReport.substring(0, 7);
+    scoreReport += "\nThis message in it's entirety in all lowercase letters: "
+        + scoreReport.toLowerCase();
+    // WHILE LOOP PROOF OF CONCEPT
+    int counter = 0;
+    while (counter != 6) {
+      System.out.println("Counter is on count: " + counter++);
     }
-    else if (score - 2 == 7) {
-      //score == 9
-      scoreReport += "\nYour score is: " + score;
-    }
-    else if (score + 2 == 12) {
-      //score == 10
-      scoreReport += "\nYour score is: " + score;
-    }
-    //THESE STRING MODIFYING METHODS ARE SIMPLY USED AS PROOF OF CONCEPT EXAMPLES
-    scoreReport += "\nThe index of the first \"y\" in this message is: " + scoreReport.indexOf("y");
-    scoreReport += "\nThe first 7 characters, including spaces, of this message are: " + scoreReport.substring(0,7);
-    scoreReport += "\nThis message in it's entirety in all lowercase letters: " + scoreReport.toLowerCase();
+    int[] intarray = new int[] { 1, 2, 3, 4, 8 };
+    int smallestNumInArray;
+    smallestNumInArray = findSmallestNumberInArray(intarray);
+    System.out
+        .println("The smallest number in the array is: " + smallestNumInArray);
+    System.out.println("The sum of all values in the array is: " + getSum(intarray));
+    System.out.println("The index of the number 4 in the \"intarray\" array is: " + findIndexOfValue(intarray, 4));
+    //USING STRINGBUILDER TO MANIPULATE A STRING USING IT'S METHODS
+    String strng = new String();
+    strng = "Wow, this sure is a string!";
+    StringBuilder strngBuilder = new StringBuilder();
+    strngBuilder.append(strng);
+    System.out.println("String before being modified :" + strngBuilder);
+    strngBuilder.delete(0, 6);
+    strngBuilder.insert(0, "T");
+    strngBuilder.append(" Wow!");
+    System.out.println("String after being modified :" + strngBuilder);
     return scoreReport;
+  }
+  //SUM OF ALL VALUES IN AN ARRAY PROOF OF CONCEPT
+  public static int getSum(int[] intarray) {
+    int accumulator = 0;
+    for (int i = 0; i < intarray.length; i++) {
+      accumulator += intarray[i];
+    }
+    return accumulator;
+  }
+  //LOWEST VALUE IN AN ARRAY PROOF OF CONCEPT
+  //USE OF A FOR EACH LOOP
+  public static int findSmallestNumberInArray(int[] intarray) {
+    int smallest = 0;
+    for (int i : intarray) {
+      if (i == intarray[0]) {
+        smallest = i;
+      }
+      if (i < smallest) {
+        smallest = i;
+      }
+    }
+    return smallest;
+  }
+  //INDEX OF VALUE IN AN ARRAY PROOF OF CONCEPT
+  public static int findIndexOfValue(int[] intarray, int a) {
+    int currentIndex = 0;
+    int i = 0;
+    while (intarray[i] != a) {
+      currentIndex = i;
+      i++;
+    }
+    return currentIndex + 1;
   }
 
 }
