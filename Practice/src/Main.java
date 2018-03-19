@@ -32,10 +32,16 @@ public class Main {
     // Creating a string variable called "name" to get a user's name
     String name = new String(scan.nextLine());
     // Creating a user object for the player
-    User user = new User();
+    User user = new User(45, "Hard");
+    User user2 = new User(12);
+    User user3 = new User("Easy");
     // Setting some placeholder information in the user object's variables
     user.setAge(18);
     user.setDifficultySelection("Medium");
+    user2.setAge(25);
+    user2.setDifficultySelection("Easy");
+    user3.setAge(58);
+    user3.setDifficultySelection("Hard");
     // Creating a boolean in order to return if a string has an int using this
     // for
     // loop
@@ -81,7 +87,7 @@ public class Main {
         + ".\nYour score is " + isEvenOrOdd(score));
     // v Method Call v Method Argument
     System.out.println(printScore(score));
-
+    System.out.println("There are " + User.getNumberOfUsers() + " Users.");
   }
 
   // A method that checks if a score is even or odd
@@ -148,9 +154,12 @@ public class Main {
     smallestNumInArray = findSmallestNumberInArray(intarray);
     System.out
         .println("The smallest number in the array is: " + smallestNumInArray);
-    System.out.println("The sum of all values in the array is: " + getSum(intarray));
-    System.out.println("The index of the number 4 in the \"intarray\" array is: " + findIndexOfValue(intarray, 4));
-    //USING STRINGBUILDER TO MANIPULATE A STRING USING IT'S METHODS
+    System.out
+        .println("The sum of all values in the array is: " + getSum(intarray));
+    System.out
+        .println("The index of the number 4 in the \"intarray\" array is: "
+            + findIndexOfValue(intarray, 4));
+    // USING STRINGBUILDER TO MANIPULATE A STRING USING IT'S METHODS
     String strng = new String();
     strng = "Wow, this sure is a string!";
     StringBuilder strngBuilder = new StringBuilder();
@@ -162,7 +171,8 @@ public class Main {
     System.out.println("String after being modified :" + strngBuilder);
     return scoreReport;
   }
-  //SUM OF ALL VALUES IN AN ARRAY PROOF OF CONCEPT
+
+  // SUM OF ALL VALUES IN AN ARRAY PROOF OF CONCEPT
   public static int getSum(int[] intarray) {
     int accumulator = 0;
     for (int i = 0; i < intarray.length; i++) {
@@ -170,8 +180,13 @@ public class Main {
     }
     return accumulator;
   }
-  //LOWEST VALUE IN AN ARRAY PROOF OF CONCEPT
-  //USE OF A FOR EACH LOOP
+
+  // LOWEST VALUE IN AN ARRAY PROOF OF CONCEPT
+  // USE OF A FOR EACH LOOP
+  // Static means that the member variable, or method, can be accessed without
+  // an instantiation of the class where it belongs.
+  // A static field allows a variable to be used among all of the instances of
+  // the class, holding the same value for every object.
   public static int findSmallestNumberInArray(int[] intarray) {
     int smallest = 0;
     for (int i : intarray) {
@@ -184,7 +199,8 @@ public class Main {
     }
     return smallest;
   }
-  //INDEX OF VALUE IN AN ARRAY PROOF OF CONCEPT
+
+  // INDEX OF VALUE IN AN ARRAY PROOF OF CONCEPT
   public static int findIndexOfValue(int[] intarray, int a) {
     int currentIndex = 0;
     int i = 0;
