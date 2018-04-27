@@ -21,20 +21,37 @@ boolean- The boolean data type has only two possible values: true and false.
 */
 
 import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.function.Predicate;
+import java.time.format.*;
+import java.time.*;
 
 public class Main {
   // Creating a Scanner object to take user inputs
   public static Scanner scan = new Scanner(System.in);
 
   public static void main(String[] args) {
-    for (int i = 0; i < 10; i++) {
-      System.out.println((int)(Math.random() * 3));
-    }
     System.out.println(
         "Welcome to the most thrilling quiz game of the century!\nWhat is your name, challenger?");
     // Creating a string variable called "name" to get a user's name
-    String name = new String(scan.nextLine());
+    String name = new String();
+    boolean nameContinue = false;
+    while(nameContinue == false) {
+    //Ensuring that no invalid inputs can be given for scan.nextLine()
+    //If an invalid input is attempted, the user gets prompted to input
+    //their name again.
+    try {
+    name = scan.nextLine();
+    nameContinue = true;
+    }
+    catch(Exception e) {
+      System.out.println("Nice try, buddy.\n What was your name again?");
+    }
+    }
     // Creating a user object for the player
     User user = new User(45, "Hard");
     User user2 = new User(12);
@@ -92,6 +109,84 @@ public class Main {
     // v Method Call v Method Argument
     System.out.println(printScore(score));
     System.out.println("There are " + User.getNumberOfUsers() + " Users.");
+    int[][] exampleArray = new int[3][3];
+    for(int i = 0; i < 3; i++) {
+      for(int j = 0; j < 3; j++) {
+        exampleArray[i][j] = j * i;
+      }
+    }
+    //Find The Value 4 (coordinates) in exampleArray
+    int xvalue = 100;
+    int yvalue = 100;
+    int breakVariable = 0;
+    for(int i = 0; i < 3; i++) {
+      if (breakVariable == 1) {
+        break;
+      }
+      for(int j = 0; j < 3; j++) {
+        if (exampleArray[i][j] == 4) {
+          xvalue = i;
+          yvalue = j;
+          breakVariable = 1;
+          break;
+        }
+      }
+    }
+    System.out.println("The location of the value 4 in the two-dimensional array \"exampleArray\" is: (" + xvalue + "," + yvalue + ").");
+   
+    //HIERARCHY DEMONSTRATION
+    Animal penguin1 = new Penguin("Smaller than a typical desk", 45.5, "Gak, Gak.", 30);
+    
+    //INTERFACE DEMONSTRATION
+    //This is an example of polymorphism, in which the interface Computer is declaring
+    //a Computer type object, and this object is assigned to an implementation of that interface
+    //MyComputer is overriding the methods of Computer in this example
+    Computer myNewPC = new MyComputer("GeForce GTX 650 Ti BOOST", 3, 8);
+    myNewPC.displaySpecs();
+    myNewPC.changeGPU("Radeon RX 480");
+    myNewPC.addFan(4);
+    myNewPC.upgradeRam(16);
+    myNewPC.displaySpecs();
+   
+    //QUEUE DEMONSTRATION
+    Queue<Integer> queue1 = new LinkedList<Integer>();
+    queue1.add(1);
+    queue1.add(3);
+    System.out.println(queue1);
+    queue1.remove();
+    System.out.println(queue1);
+    
+    //STACK DEMONSTRATION
+    Stack<Integer> stack1 = new Stack<Integer>();
+    stack1.push(101);
+    stack1.push(102);
+    stack1.push(103);
+    System.out.println(stack1);
+    stack1.pop();
+    System.out.println(stack1);
+    
+    //HASHTABLE DEMONSTRATION
+    Hashtable<Integer, String> hashtable1 = new Hashtable<Integer, String>();
+    hashtable1.put(1, "This");
+    hashtable1.put(2, "is");
+    hashtable1.put(3, "a");
+    hashtable1.put(4, "Demonstration");
+    for (int i = 1; i <= 4; i++) {
+      System.out.println(hashtable1.get(i));
+    }
+    
+    //PREDICATE LAMBDA EXPRESSION EXAMPLE
+    //Lambda expressions allow you send complex, often multi-line arguments
+    //to a method in a short hand manner. In this example I am sending the
+    //conditional statement "x < 5" to a while loop in sayHello.
+    sayHello((x) -> x < 5);
+    
+    //TIME WHEN METHOD WAS CALLED
+    LocalDateTime now = LocalDateTime.now();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    System.out.println(now.format(format));
+    
+    //START OF TIC TAC TOE DEMONSTRATION
     String[][] toeArray = new String[3][3];
     for(int i = 0; i < 3; i++) {
       for(int j = 0; j < 3; j++) {
@@ -121,6 +216,7 @@ public class Main {
     int t;
     toeDisplay(toeArray);
     while (gameOn) {
+    try {
     System.out.println("Input x coordinate");
     scan = new Scanner(System.in);
     r = scan.nextInt();
@@ -134,7 +230,19 @@ public class Main {
     scan = new Scanner(System.in);
     toeDisplay(toeArray);
     }
+    catch (Exception e) {
+      System.out.println("Invalid input. Please try again.");
+    }
+    }
     scan.close();
+  }
+  
+  public static void sayHello(Predicate<Integer> condition) {
+    int x = 0;
+    while(condition.test(x)) {
+      System.out.println("Hello!");
+      x++;
+    }
   }
   
   public static boolean toeInput(int a, int b, String[][] toeArray, int player) {
