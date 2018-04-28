@@ -4,11 +4,11 @@
 //This document shows the framework methods that each sub-computer class must adopt
 
 public interface Computer {
-  void changeGPU(String newGPU);
+  void changeGpu(String newGpu);
 
   void addFan(int numOfFans);
 
-  void upgradeRam(int newGBAmount);
+  void upgradeRam(int newGbAmount);
 
   void displaySpecs();
 }

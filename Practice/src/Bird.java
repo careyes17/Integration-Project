@@ -8,6 +8,14 @@ public class Bird extends Animal {
 
   public Bird(String size, double heightInches, String sound, double wingspan) {
     super(size, heightInches, sound);
+    this.setWingspan(wingspan);
+  }
+
+  public double getWingspan() {
+    return wingspan;
+  }
+
+  public void setWingspan(double wingspan) {
     this.wingspan = wingspan;
   }
 }

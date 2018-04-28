@@ -7,19 +7,32 @@
 -----Variables-----
 Variables are containers that hold values that are used in a program.
 In Java, every variable must be declared to use a data type.
-A variable could be declared to use one of the eight primitive data types: byte, short, int, long, float, double, char or boolean.
+A variable could be declared to use one of the eight primitive data 
+types: byte, short, int, long, float, double, char or boolean.
 -----Data Types-----
 There are 8 primitive, built-in data types
-btye- The byte data type is an 8-bit signed two's complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive).
-short- The short data type is a 16-bit signed two's complement integer. It has a minimum value of -32,768 and a maximum value of 32,767 (inclusive).
-int- The int data type is a 32-bit signed two's complement integer, which has a minimum value of -231 and a maximum value of 231-1.
-long- The long data type is a 64-bit two's complement integer. The signed long has a minimum value of -263 and a maximum value of 263-1.
-float- The float data type is a single-precision 32-bit IEEE 754 floating point. This should not be used for precise calculations.
-double- The double data type is a double-precision 64-bit IEEE 754 floating point. This should be used for decimal numbers.
-char- The char data type is a single 16-bit Unicode character. It has a minimum value of '\u0000' (or 0) and a maximum value of '\uffff' (or 65,535 inclusive).
-boolean- The boolean data type has only two possible values: true and false. 
+byte- The byte data type is an 8-bit signed two's complement integer. 
+It has a minimum value of -128 and a maximum value of 127 (inclusive).
+short- The short data type is a 16-bit signed two's complement integer. 
+It has a minimum value of -32,768 and a maximum value of 
+32,767 (inclusive).
+int- The int data type is a 32-bit signed two's complement
+integer, which has a minimum value of -231 and a maximum value of 231-1.
+long- The long data type is a 64-bit two's complement integer. The 
+signed long has a minimum value of -263 and a maximum value of 263-1.
+float- The float data type is a single-precision 32-bit IEEE 754
+floating point. This should not be used for precise calculations.
+double- The double data type is a double-precision 64-bit IEEE 754 
+floating point. This should be used for decimal numbers.
+char- The char data type is a single 16-bit Unicode character. It has a
+minimum value of '\u0000' (or 0) and a maximum value of
+ '\uffff' (or 65,535 inclusive).
+boolean- The boolean data type has only two possible 
+values: true and false. 
 */
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -27,40 +40,43 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.function.Predicate;
-import java.time.format.*;
-import java.time.*;
 
 public class Main {
   // Creating a Scanner object to take user inputs
   public static Scanner scan = new Scanner(System.in);
-
+  
+  /**
+   * This method contains all of the operations for this application.
+   * @param args A string array containing the command line arguments.
+   */
+  
   public static void main(String[] args) {
+    
     System.out.println(
         "Welcome to the most thrilling quiz game of the century!\nWhat is your name, challenger?");
     // Creating a string variable called "name" to get a user's name
     String name = new String();
     boolean nameContinue = false;
-    while(nameContinue == false) {
-    //Ensuring that no invalid inputs can be given for scan.nextLine()
-    //If an invalid input is attempted, the user gets prompted to input
-    //their name again.
-    try {
-    name = scan.nextLine();
-    nameContinue = true;
-    }
-    catch(Exception e) {
-      System.out.println("Nice try, buddy.\n What was your name again?");
-    }
+    while (nameContinue == false) {
+      //Ensuring that no invalid inputs can be given for scan.nextLine()
+      //If an invalid input is attempted, the user gets prompted to input
+      //their name again.
+      try {
+        name = scan.nextLine();
+        nameContinue = true;
+      } catch (Exception e) {
+        System.out.println("Nice try, buddy.\n What was your name again?");
+      }
     }
     // Creating a user object for the player
     User user = new User(45, "Hard");
     User user2 = new User(12);
-    User user3 = new User("Easy");
     // Setting some placeholder information in the user object's variables
     user.setAge(18);
     user.setDifficultySelection("Medium");
     user2.setAge(25);
     user2.setDifficultySelection("Easy");
+    User user3 = new User("Easy");
     user3.setAge(58);
     user3.setDifficultySelection("Hard");
     // Creating a boolean in order to return if a string has an int using this
@@ -89,17 +105,13 @@ public class Main {
             "Oh, I see. Sorry for being snarky...\nNevertheless, let us begin the game, "
                 + name + ".");
       }
-    }
-    // Testing if the name contains an int
-    else if (intInString) {
+    } else if (intInString) { // Testing if the name contains an int
       System.out
           .println("We don't have all day here.\nPlease enter your name.");
       name = scan.nextLine();
       System.out.println(
           "Oh, it's you, " + name + "?\nThis will be fun. Let us begin.");
-    }
-    // If the user enters their real name, the intended response executes
-    else {
+    } else { // If the user enters their real name, the intended response executes
       System.out.println(
           "Oh, it's you, " + name + "?\nThis will be fun. Let us begin.");
     }
@@ -110,8 +122,8 @@ public class Main {
     System.out.println(printScore(score));
     System.out.println("There are " + User.getNumberOfUsers() + " Users.");
     int[][] exampleArray = new int[3][3];
-    for(int i = 0; i < 3; i++) {
-      for(int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
         exampleArray[i][j] = j * i;
       }
     }
@@ -119,11 +131,11 @@ public class Main {
     int xvalue = 100;
     int yvalue = 100;
     int breakVariable = 0;
-    for(int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
       if (breakVariable == 1) {
         break;
       }
-      for(int j = 0; j < 3; j++) {
+      for (int j = 0; j < 3; j++) {
         if (exampleArray[i][j] == 4) {
           xvalue = i;
           yvalue = j;
@@ -132,21 +144,32 @@ public class Main {
         }
       }
     }
-    System.out.println("The location of the value 4 in the two-dimensional array \"exampleArray\" is: (" + xvalue + "," + yvalue + ").");
+    System.out.println("The location of the value 4 in the "
+        + "two-dimensional array \"exampleArray\" "
+        + "is: (" + xvalue + "," + yvalue + ").");
    
     //HIERARCHY DEMONSTRATION
     Animal penguin1 = new Penguin("Smaller than a typical desk", 45.5, "Gak, Gak.", 30);
+    //Second time executing
+    penguin1.makeNoise();
+    //Other operations
+    System.out.println(penguin1.getHeight());
+    penguin1.changeHeight(47.5);
+    System.out.println(penguin1.getHeight());
+    System.out.println(((Bird) penguin1).getWingspan());
+    ((Bird) penguin1).setWingspan(34);
+    System.out.println(((Bird) penguin1).getWingspan()); 
     
     //INTERFACE DEMONSTRATION
     //This is an example of polymorphism, in which the interface Computer is declaring
     //a Computer type object, and this object is assigned to an implementation of that interface
     //MyComputer is overriding the methods of Computer in this example
-    Computer myNewPC = new MyComputer("GeForce GTX 650 Ti BOOST", 3, 8);
-    myNewPC.displaySpecs();
-    myNewPC.changeGPU("Radeon RX 480");
-    myNewPC.addFan(4);
-    myNewPC.upgradeRam(16);
-    myNewPC.displaySpecs();
+    Computer myNewPc = new MyComputer("GeForce GTX 650 Ti BOOST", 3, 8);
+    myNewPc.displaySpecs();
+    myNewPc.changeGpu("Radeon RX 480");
+    myNewPc.addFan(4);
+    myNewPc.upgradeRam(16);
+    myNewPc.displaySpecs();
    
     //QUEUE DEMONSTRATION
     Queue<Integer> queue1 = new LinkedList<Integer>();
@@ -188,8 +211,8 @@ public class Main {
     
     //START OF TIC TAC TOE DEMONSTRATION
     String[][] toeArray = new String[3][3];
-    for(int i = 0; i < 3; i++) {
-      for(int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
         toeArray[i][j] = "-";
       }
     }
@@ -197,223 +220,281 @@ public class Main {
     System.out.println("Enter which player you want to be. (1 or 2)");
     int player = 1;
     boolean playerCreated = false;
-    Scanner scan1 = new Scanner(System.in);
     while (playerCreated == false) {
       try {
-      scan1 = new Scanner(System.in);
-      player = scan1.nextInt();
+        scan = new Scanner(System.in);
+        player = scan.nextInt();
         if (player != 1 && player != 2) {
           throw new Exception();
         }
-      playerCreated = true;
+        playerCreated = true;
+      } catch (Exception e) {
+        System.out.println("Please input a valid player selection. (1 or 2)");
       }
-    catch (Exception e) {
-      System.out.println("Please input a valid player selection. (1 or 2)");
-    }
     }
     boolean gameOn = true;
     int r;
     int t;
     toeDisplay(toeArray);
     while (gameOn) {
-    try {
-    System.out.println("Input x coordinate");
-    scan = new Scanner(System.in);
-    r = scan.nextInt();
-    System.out.println("Input y coordinate");
-    scan = new Scanner(System.in);
-    t = scan.nextInt();
-    gameOn = toeInput(r,t,toeArray,player);
-    if (gameOn == false) {
-      break;
-    }
-    scan = new Scanner(System.in);
-    toeDisplay(toeArray);
-    }
-    catch (Exception e) {
-      System.out.println("Invalid input. Please try again.");
-    }
+      try {
+        System.out.println("Input x coordinate");
+        scan = new Scanner(System.in);
+        r = scan.nextInt();
+        System.out.println("Input y coordinate");
+        scan = new Scanner(System.in);
+        t = scan.nextInt();
+        gameOn = toeInput(r,t,toeArray,player);
+        if (gameOn == false) {
+          break;
+        }
+        scan = new Scanner(System.in);
+        toeDisplay(toeArray);
+      } catch (Exception e) {
+        System.out.println("Invalid input. Please try again.");
+      }
     }
     scan.close();
   }
   
+  /**
+   * This method shows the lambda expression conditional statement
+   * by printing "Hello!" 5 times.
+   * @param condition The condition of the while statement.
+   */
+  
   public static void sayHello(Predicate<Integer> condition) {
     int x = 0;
-    while(condition.test(x)) {
+    while (condition.test(x)) {
       System.out.println("Hello!");
       x++;
     }
   }
   
+  /**
+   * This method contains the interaction between a two-dimensional 
+   * array and coordinate inputs in order to create a game of
+   * Tic-tac-toe.
+   * @param a x-coordinate input.
+   * @param b y-coordinate input.
+   * @param toeArray The playing field for Tic-tac-toe.
+   * @param player The number associated with the human player
+   * @return Returns the verdict, either true or false, denoting whether
+   *     to continue playing or not.
+   */
+  
   public static boolean toeInput(int a, int b, String[][] toeArray, int player) {
     try {
-    if (toeArray[a][b].equals("X") || toeArray[a][b].equals("O")) {
-      throw new Exception();
-    }
-    else {
-      if (player == 1) {
-        toeArray[a][b] = "X";
+      if (toeArray[a][b].equals("X") || toeArray[a][b].equals("O")) {
+        throw new Exception();
+      } else {
+        if (player == 1) {
+          toeArray[a][b] = "X";
+        } else {
+          toeArray[a][b] = "O";
+        }
+        if (toeArray[0][0].equals("X") && toeArray[0][1].equals("X") 
+            && toeArray[0][2].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[1][0].equals("X") && toeArray[1][1].equals("X") 
+            && toeArray[1][2].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[2][0].equals("X") && toeArray[2][1].equals("X") 
+            && toeArray[2][2].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][0].equals("X") && toeArray[1][0].equals("X") 
+            && toeArray[2][0].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][1].equals("X") && toeArray[1][1].equals("X") 
+            && toeArray[2][1].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][2].equals("X") && toeArray[1][2].equals("X") 
+            && toeArray[2][2].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][0].equals("X") && toeArray[1][1].equals("X") 
+            && toeArray[2][2].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][2].equals("X") && toeArray[1][1].equals("X") 
+            && toeArray[2][0].equals("X")) {
+          System.out.println("Player 1 wins!");
+          return false;
+        }
+        if (toeArray[0][0].equals("O") && toeArray[0][1].equals("O") 
+            && toeArray[0][2].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[1][0].equals("O") && toeArray[1][1].equals("O") 
+            && toeArray[1][2].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[2][0].equals("O") && toeArray[2][1].equals("O") 
+            && toeArray[2][2].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[0][0].equals("O") && toeArray[1][0].equals("O") 
+            && toeArray[2][0].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[0][1].equals("O") && toeArray[1][1].equals("O") 
+            && toeArray[2][1].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[0][2].equals("O") && toeArray[1][2].equals("O") 
+            && toeArray[2][2].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[0][0].equals("O") && toeArray[1][1].equals("O") 
+            && toeArray[2][2].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
+        if (toeArray[0][2].equals("O") && toeArray[1][1].equals("O") 
+            && toeArray[2][0].equals("O")) {
+          System.out.println("Player 2 wins!");
+          return false;
+        }
       }
-      else {
-        toeArray[a][b] = "O";
-      }
-      if (toeArray[0][0].equals("X") && toeArray[0][1].equals("X") && toeArray[0][2].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[1][0].equals("X") && toeArray[1][1].equals("X") && toeArray[1][2].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[2][0].equals("X") && toeArray[2][1].equals("X") && toeArray[2][2].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][0].equals("X") && toeArray[1][0].equals("X") && toeArray[2][0].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][1].equals("X") && toeArray[1][1].equals("X") && toeArray[2][1].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][2].equals("X") && toeArray[1][2].equals("X") && toeArray[2][2].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][0].equals("X") && toeArray[1][1].equals("X") && toeArray[2][2].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][2].equals("X") && toeArray[1][1].equals("X") && toeArray[2][0].equals("X")) {
-        System.out.println("Player 1 wins!");
-        return false;
-      }
-      if (toeArray[0][0].equals("O") && toeArray[0][1].equals("O") && toeArray[0][2].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[1][0].equals("O") && toeArray[1][1].equals("O") && toeArray[1][2].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[2][0].equals("O") && toeArray[2][1].equals("O") && toeArray[2][2].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[0][0].equals("O") && toeArray[1][0].equals("O") && toeArray[2][0].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[0][1].equals("O") && toeArray[1][1].equals("O") && toeArray[2][1].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[0][2].equals("O") && toeArray[1][2].equals("O") && toeArray[2][2].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[0][0].equals("O") && toeArray[1][1].equals("O") && toeArray[2][2].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-      if (toeArray[0][2].equals("O") && toeArray[1][1].equals("O") && toeArray[2][0].equals("O")) {
-        System.out.println("Player 2 wins!");
-        return false;
-      }
-    }
-    int c;
-    int d;
-    boolean solutionFound = false;
-    while (solutionFound == false) {
-      c = (int)(Math.random() * 3);
-      d = (int)(Math.random() * 3);
-      if (toeArray[c][d].equals("-")) {
-        if(player == 1) {
-          toeArray[c][d] = "O";        
+      int c;
+      int d;
+      boolean solutionFound = false;
+      while (solutionFound == false) {
+        c = (int)(Math.random() * 3);
+        d = (int)(Math.random() * 3);
+        if (toeArray[c][d].equals("-")) {
+          if (player == 1) {
+            toeArray[c][d] = "O";        
+          } else {
+            toeArray[c][d] = "X"; 
           }
-        else {
-          toeArray[c][d] = "X"; 
+          if (toeArray[0][0].equals("X") && toeArray[0][1].equals("X") 
+              && toeArray[0][2].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[1][0].equals("X") && toeArray[1][1].equals("X") 
+              && toeArray[1][2].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[2][0].equals("X") && toeArray[2][1].equals("X") 
+              && toeArray[2][2].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][0].equals("X") && toeArray[1][0].equals("X") 
+              && toeArray[2][0].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][1].equals("X") && toeArray[1][1].equals("X") 
+              && toeArray[2][1].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][2].equals("X") && toeArray[1][2].equals("X") 
+              && toeArray[2][2].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][0].equals("X") && toeArray[1][1].equals("X") 
+              && toeArray[2][2].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][2].equals("X") && toeArray[1][1].equals("X") 
+              && toeArray[2][0].equals("X")) {
+            System.out.println("Player 1 wins!");
+            return false;
+          }
+          if (toeArray[0][0].equals("O") && toeArray[0][1].equals("O") 
+              && toeArray[0][2].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[1][0].equals("O") && toeArray[1][1].equals("O") 
+              && toeArray[1][2].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[2][0].equals("O") && toeArray[2][1].equals("O") 
+              && toeArray[2][2].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[0][0].equals("O") && toeArray[1][0].equals("O") 
+              && toeArray[2][0].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[0][1].equals("O") && toeArray[1][1].equals("O") 
+              && toeArray[2][1].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[0][2].equals("O") && toeArray[1][2].equals("O") 
+              && toeArray[2][2].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[0][0].equals("O") && toeArray[1][1].equals("O") 
+              && toeArray[2][2].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          if (toeArray[0][2].equals("O") && toeArray[1][1].equals("O") 
+              && toeArray[2][0].equals("O")) {
+            System.out.println("Player 2 wins!");
+            return false;
+          }
+          solutionFound = true;
         }
-        if (toeArray[0][0].equals("X") && toeArray[0][1].equals("X") && toeArray[0][2].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[1][0].equals("X") && toeArray[1][1].equals("X") && toeArray[1][2].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[2][0].equals("X") && toeArray[2][1].equals("X") && toeArray[2][2].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][0].equals("X") && toeArray[1][0].equals("X") && toeArray[2][0].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][1].equals("X") && toeArray[1][1].equals("X") && toeArray[2][1].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][2].equals("X") && toeArray[1][2].equals("X") && toeArray[2][2].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][0].equals("X") && toeArray[1][1].equals("X") && toeArray[2][2].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][2].equals("X") && toeArray[1][1].equals("X") && toeArray[2][0].equals("X")) {
-          System.out.println("Player 1 wins!");
-          return false;
-        }
-        if (toeArray[0][0].equals("O") && toeArray[0][1].equals("O") && toeArray[0][2].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[1][0].equals("O") && toeArray[1][1].equals("O") && toeArray[1][2].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[2][0].equals("O") && toeArray[2][1].equals("O") && toeArray[2][2].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[0][0].equals("O") && toeArray[1][0].equals("O") && toeArray[2][0].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[0][1].equals("O") && toeArray[1][1].equals("O") && toeArray[2][1].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[0][2].equals("O") && toeArray[1][2].equals("O") && toeArray[2][2].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[0][0].equals("O") && toeArray[1][1].equals("O") && toeArray[2][2].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        if (toeArray[0][2].equals("O") && toeArray[1][1].equals("O") && toeArray[2][0].equals("O")) {
-          System.out.println("Player 2 wins!");
-          return false;
-        }
-        solutionFound = true;
       }
-    }
-  }
-    catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("Input Other Coordinates.");
     }
     return true;
   }
+  
+  /**
+   * This method displays the Tic-tac-toe playing field after an action
+   * has occured.
+   * @param toeArray This is the Tic-tac-toe playing field two-dimensional
+   *      array.
+   */
+  
   public static void toeDisplay(String[][] toeArray) {
     System.out.println(Arrays.toString(toeArray[0]));
     System.out.println(Arrays.toString(toeArray[1]));
     System.out.println(Arrays.toString(toeArray[2]));
   }
 
+  /**
+   * The player's score is checked to see whether the score is even or 
+   * odd, which is returned as a string.
+   * @param score The score the player has.
+   * @return Returns a string denoting whether the input was even or odd.
+   */
+  
   // A method that checks if a score is even or odd
   // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv header
   public static String isEvenOrOdd(int score) {
@@ -425,14 +506,20 @@ public class Main {
     // but if the calculation includes a double, it will be accurate
     if (score % 2 == 0) {
       return "even!";
-    }
-    // If the int division lost precision, then "odd!" is returned
-    else {
+    } else { // If the int division lost precision, then "odd!" is returned
       return "odd!";
     }
 
   }
 
+  /**
+   * The player's score is input and given a "response" in the form
+   * of a system output depending on the value of the score.
+   * @param score The player's score
+   * @return Returns a string containing a "response" corresponding
+   *      to the value of score.
+   */
+  
   public static String printScore(int score) {
     String scoreReport = new String();
     switch (score) {
@@ -497,6 +584,13 @@ public class Main {
   }
 
   // SUM OF ALL VALUES IN AN ARRAY PROOF OF CONCEPT
+  
+  /**
+   * Accumulates the values inside the input array.
+   * @param intarray The array that is input.
+   * @return Returns the sum of all values in the input array.
+   */
+  
   public static int getSum(int[] intarray) {
     int accumulator = 0;
     for (int i = 0; i < intarray.length; i++) {
@@ -511,6 +605,13 @@ public class Main {
   // an instantiation of the class where it belongs.
   // A static field allows a variable to be used among all of the instances of
   // the class, holding the same value for every object.
+  
+  /**
+   * Find the smallest number in an input one-dimensional array.
+   * @param intarray The array that is input.
+   * @return The smallest number found in the input array.
+   */
+  
   public static int findSmallestNumberInArray(int[] intarray) {
     int smallest = 0;
     for (int i : intarray) {
@@ -525,6 +626,14 @@ public class Main {
   }
 
   // INDEX OF VALUE IN AN ARRAY PROOF OF CONCEPT
+  
+  /**
+   * Finds the index of an input value in an input array.
+   * @param intarray The array that is being searched.
+   * @param a The int that is being searched for.
+   * @return Returns the index of the input value in the array.
+   */
+  
   public static int findIndexOfValue(int[] intarray, int a) {
     int currentIndex = 0;
     int i = 0;
