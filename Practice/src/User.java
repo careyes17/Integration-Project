@@ -1,13 +1,16 @@
-//Carlos Reyes
-//This file contains the code for User objects, or players of the inquisitive quiz game
-//This will detail certain important details about the player's performance, etc.
+/**
+ * This file contains the code for User objects, or players of the inquisitive quiz game.
+ * This will detail certain important details about the player's performance, etc.
+ * @author Carlos Reyes
+ *
+ */
 
 public class User {
   // These will be used later in development
   private String difficultySelection = new String();
   private int age;
   private static int numberOfUsers = 0;
-
+  
   /**
    * Takes the input values describing a user to be stored in the private
    * fields in this class in initialization.

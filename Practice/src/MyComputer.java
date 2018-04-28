@@ -1,6 +1,9 @@
-//Carlos Reyes
-//This file contains the code the MyComputer class, which implements the methods of Computer
-//This document shows a developed class from the Computer interface, overriding all of the methods
+/**
+ * This file contains the code the MyComputer class, which implements the methods of Computer.
+ * This document shows a developed class from the Computer interface, overriding all of the methods.
+ * @author Carlos Reyes
+ *
+ */
 
 public class MyComputer implements Computer {
   private String gpu;

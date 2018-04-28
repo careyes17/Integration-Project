@@ -1,6 +1,5 @@
-
 //Carlos Reyes
-//Inquisitive Quiz
+//The Inquisitive Quiz
 //Welcome to my integration project!
 
 /*
@@ -40,6 +39,15 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.function.Predicate;
+
+/**
+ * This class contains the main method, where all of the code I've written
+ * is executed, allowing the program to function. Some of the items contained
+ * in the class include a Tic-tac-toe game, demonstratins for concepts
+ * I've learned in COP 2006, among other things.
+ * @author Carlos Reyes
+ *
+ */
 
 public class Main {
   // Creating a Scanner object to take user inputs

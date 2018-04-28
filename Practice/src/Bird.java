@@ -1,7 +1,10 @@
-//Carlos Reyes
-//This file contains the code for the Bird class, which inherits from Animal
-//This class contains fields that are only specific to birds, which will allow
-//bird objects to be created without omission of fields that not all animals have
+/**
+ * This file contains the code for the Bird class, which inherits from Animal.
+ * This class contains fields that are only specific to birds, which will allow
+ * bird objects to be created without omission of fields that not all animals have.
+ * @author Carlos Reyes
+ *
+ */
 
 public class Bird extends Animal {
   private double wingspan;
